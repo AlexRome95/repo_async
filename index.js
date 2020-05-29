@@ -6,7 +6,14 @@ var app = express();
 var asyncHandler = require('express-async-handler');
 
 app.configure(function(){  
-  app.use(express.bodyParser());  
+  app.use(express.bodyParser());
+  app.use((err, req, res, next) => {
+    if (err) {
+      res.json({'R':'400 Error en el Json'})
+    } else {
+      next()
+    }
+  }); 
   app.use(express.methodOverride());  
   app.use(app.router);  
 });  
@@ -23,3 +30,4 @@ mongoose.connect('mongodb://localhost/test_database');
   
 //Start the server  
 http.createServer(app).listen(8080);  
+

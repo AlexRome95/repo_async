@@ -3,8 +3,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;  
   
 var sensorSchema = new Schema({  
-    nombre: String,  
-    estado: String  
+    Temp: String,  
+    NoCo: String,
+    Fecha: Date 
 });  
   
 //Export the schema  
